@@ -57,7 +57,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ghcr.io/anthonyporthouse/fabric-server
+            ghcr.io/anthonyporthouse/minecraft-server
           tags: |
             type=raw,value=latest,enable=${{ matrix.java-version == 17 }}
             type=raw,value=java${{matrix.java-version}}-${{needs.release-please.outputs.major}}.${{needs.release-please.outputs.minor}}.${{needs.release-please.outputs.patch}}
