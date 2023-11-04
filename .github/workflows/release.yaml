@@ -1,0 +1,71 @@
+on:
+  push:
+    branches:
+      - main
+
+  permissions:
+    contents: write
+    pull-requests: write
+    packages: write
+
+  name: Create Release
+
+  jobs:
+    release-please:
+      runs-on: ubuntu-latest
+
+      outputs:
+        releases_created: ${{ steps.release-please.outputs.releases_created }}
+        tag_name: ${{ steps.release-please.outputs.tag_name }}
+        major: ${{ steps.release-please.outputs.major }}
+        minor: ${{ steps.release-please.outputs.minor }}
+        patch: ${{ steps.release-please.outputs.patch }}
+        sha: ${{ steps.release-please.outputs.sha }}
+
+      steps:
+        - uses: google-github-actions/release-please-action@v3
+          id: release-please
+          with:
+            release-type: simple
+            package-name: fabric-server
+
+    build:
+      runs-on: ubuntu-latest
+      needs: release-please
+      if: ${{ needs.release-please.outputs.releases_created }}
+  
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+        - name: Setup QEMU
+          uses: docker/setup-qemu-action@v3
+        - name: Setup Docker Buildx
+          uses: docker/setup-buildx-action@v3
+        - name: Login to GHCR
+          uses: docker/login-action@v3
+          with:
+            registry: ghcr.io
+            username: ${{ github.actor }}
+            password: ${{ github.token }}
+        - name: Docker meta
+          id: meta
+          uses: docker/metadata-action@v5
+          with:
+            images: |
+              ghcr.io/anthonyporthouse/fabric-server
+            tags: |
+              type=raw,value=latest
+              type=raw,value=${{needs.release-please.outputs.major}}.${{needs.release-please.outputs.minor}}.${{needs.release-please.outputs.patch}}
+              type=raw,value=${{needs.release-please.outputs.major}}.${{needs.release-please.outputs.minor}}
+              type=raw,value=${{needs.release-please.outputs.major}}
+              type=sha
+        - name: Build
+          uses: docker/build-push-action@v5
+          with:
+            context: .
+            push: ${{ github.event_name != 'pull_request' }}
+            tags: ${{ steps.meta.outputs.tags }}
+            labels: ${{ steps.meta.outputs.labels }}
+            platforms: |
+              linux/amd64
+              linux/arm64
