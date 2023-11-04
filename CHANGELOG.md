@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/AnthonyPorthouse/minecraft-server/compare/v1.0.0...v1.0.1) (2023-11-04)
+
+
+### Bug Fixes
+
+* add executable bit to entrypoint ([2c8dc9c](https://github.com/AnthonyPorthouse/minecraft-server/commit/2c8dc9ca9f1836a95ad192b8946bd4f0a507a839))
+
 ## 1.0.0 (2023-11-04)
 
 
