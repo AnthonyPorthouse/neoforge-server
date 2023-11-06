@@ -63,7 +63,7 @@ jobs:
           tags: |
             type=raw,value=latest,prefix=,enable=${{ matrix.java-version == 17 }}
             type=raw,value=latest,enable=${{ matrix.java-version == 17 }}
-            type=raw,value=java${{ matrix.java-version == 17 }},prefix=
+            type=raw,value=java${{ matrix.java-version }},prefix=
             type=raw,value=${{needs.release-please.outputs.major}}.${{needs.release-please.outputs.minor}}.${{needs.release-please.outputs.patch}}
             type=raw,value=${{needs.release-please.outputs.major}}.${{needs.release-please.outputs.minor}}
             type=raw,value=${{needs.release-please.outputs.major}}
