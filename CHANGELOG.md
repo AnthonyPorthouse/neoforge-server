@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/AnthonyPorthouse/minecraft-server/compare/v1.0.1...v1.1.0) (2023-11-06)
+
+
+### Features
+
+* **build:** use global prefix in build ([70ab7a8](https://github.com/AnthonyPorthouse/minecraft-server/commit/70ab7a8d66ce84a03b6388d09ba9ab1852577272))
+
 ## [1.0.1](https://github.com/AnthonyPorthouse/minecraft-server/compare/v1.0.0...v1.0.1) (2023-11-04)
 
 
