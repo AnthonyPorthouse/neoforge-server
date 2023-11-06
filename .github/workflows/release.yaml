@@ -58,12 +58,14 @@ jobs:
         with:
           images: |
             ghcr.io/anthonyporthouse/minecraft-server
+          flavor: |
+            prefix=java${{ matrix.java-version }}-
           tags: |
             type=raw,value=latest,enable=${{ matrix.java-version == 17 }}
-            type=raw,value=java${{matrix.java-version}}-${{needs.release-please.outputs.major}}.${{needs.release-please.outputs.minor}}.${{needs.release-please.outputs.patch}}
-            type=raw,value=java${{matrix.java-version}}-${{needs.release-please.outputs.major}}.${{needs.release-please.outputs.minor}}
-            type=raw,value=java${{matrix.java-version}}-${{needs.release-please.outputs.major}}
-            type=raw,value=java${{matrix.java-version}}
+            type=raw,value=${{needs.release-please.outputs.major}}.${{needs.release-please.outputs.minor}}.${{needs.release-please.outputs.patch}}
+            type=raw,value=${{needs.release-please.outputs.major}}.${{needs.release-please.outputs.minor}}
+            type=raw,value=${{needs.release-please.outputs.major}}
+            type=sha
 
       - name: Build
         uses: docker/build-push-action@v5
