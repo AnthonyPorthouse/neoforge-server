@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/AnthonyPorthouse/minecraft-server/compare/v1.1.0...v1.1.1) (2023-11-06)
+
+
+### Bug Fixes
+
+* add naked java version and latest tag ([1c1f6a2](https://github.com/AnthonyPorthouse/minecraft-server/commit/1c1f6a285497adbbbe585dd84b3a79dc217c6748))
+
 ## [1.1.0](https://github.com/AnthonyPorthouse/minecraft-server/compare/v1.0.1...v1.1.0) (2023-11-06)
 
 
