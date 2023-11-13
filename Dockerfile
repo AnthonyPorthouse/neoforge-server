@@ -6,6 +6,9 @@ RUN apt update \
     && apt install -y jq \
     && rm -rf /var/lib/apt/lists/*
 
+RUN adduser --disabled-password --uid 1000 --shell /bin/bash --gecos "" minecraft \
+    && addgroup minecraft users
+
 EXPOSE 25565
 
 WORKDIR /minecraft
