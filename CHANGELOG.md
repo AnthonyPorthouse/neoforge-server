@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/AnthonyPorthouse/minecraft-server/compare/v1.1.2...v1.2.0) (2023-11-13)
+
+
+### Features
+
+* allow specifying uid and gid ([00b8eef](https://github.com/AnthonyPorthouse/minecraft-server/commit/00b8eef16d25fea689e391fff0082da518b3f3c1))
+
 ## [1.1.2](https://github.com/AnthonyPorthouse/minecraft-server/compare/v1.1.1...v1.1.2) (2023-11-06)
 
 
