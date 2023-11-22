@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/AnthonyPorthouse/minecraft-server/compare/v1.2.0...v1.3.0) (2023-11-22)
+
+
+### Features
+
+* allow configuring server.properties ([da309e5](https://github.com/AnthonyPorthouse/minecraft-server/commit/da309e5ce633cc3605a7279ccc9b419162002f04))
+
 ## [1.2.0](https://github.com/AnthonyPorthouse/minecraft-server/compare/v1.1.2...v1.2.0) (2023-11-13)
 
 
