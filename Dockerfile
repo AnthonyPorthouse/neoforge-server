@@ -18,5 +18,7 @@ ENV MINECRAFT_VERSION=1.20.2
 ENV JAVA_OPTS="-Xms1G -Xmx2G"
 
 COPY entrypoint.sh /entrypoint.sh
+COPY ./set-up-user.sh /usr/local/bin/set-up-user.sh
+COPY ./configure-server-properties.sh /usr/local/bin/configure-server-properties.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]
