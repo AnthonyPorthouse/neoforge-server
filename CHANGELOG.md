@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/AnthonyPorthouse/neoforge-server/compare/v1.0.0...v1.0.1) (2024-01-07)
+
+
+### Bug Fixes
+
+* **build:** use correct image names ([ea160e8](https://github.com/AnthonyPorthouse/neoforge-server/commit/ea160e8c90494aa6561dbd2b5cfaa180d6526300))
+
 ## 1.0.0 (2024-01-07)
 
 
