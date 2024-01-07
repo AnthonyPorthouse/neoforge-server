@@ -1,4 +1,4 @@
-# [anthonyporthouse/minecraft-server](https://github.com/anthonyporthouse/minecraft-server)
+# [anthonyporthouse/neoforge-server](https://github.com/anthonyporthouse/neoforge-server)
 
 ## Tags
 
@@ -19,7 +19,7 @@ Example `docker-compose.yaml` file:
 ---
 services:
   minecraft:
-    image: ghcr.io/anthonyporthouse/minecraft-server:java17
+    image: ghcr.io/anthonyporthouse/neoforge-server:java17
 
     restart: unless-stopped
 
@@ -27,7 +27,8 @@ services:
       PUID: 1000
       PGID: 1000
 
-      MINECRAFT_VERSION: 1.20.2
+      MINECRAFT_VERSION: 1.20.4
+      NEO_VERSION: 20.4.80-beta
       JAVA_OPTS: -Xms1G -Xmx2G
 
       MC_DIFFICULTY: hard
@@ -63,9 +64,17 @@ This should map to the current users GID which can be found using `id -g` on Lin
 
 **`MINECRAFT_VERSION`**
 
-> Default Value: `1.20.2`
+> Default Value: `1.20.4`
 
 This environment variable specifies which version of Minecraft you wish to run. This can be any version supported, either stable or prerelease.
+
+If this is changed after an initial run the container will pull the new version and use that.
+
+**`NEO_VERSION`**
+
+> Default Value: `20.4.80-beta`
+
+This environment variable specifies which version of the NeoForge loader you wish to run.
 
 If this is changed after an initial run the container will pull the new version and use that.
 
