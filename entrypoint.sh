@@ -1,7 +1,15 @@
 #! /usr/bin/env bash
 set -e
 
-JAR_NAME="server-${MINECRAFT_VERSION}.jar"
+BASE_URL="https://maven.neoforged.net/releases/net/neoforged"
+JAR_NAME="neoforge-${NEO_VERSION}-installer.jar"
+
+if [ "$MINECRAFT_VERSION" = "1.20.1" ]; then
+    BASE_URL="$BASE_URL/forge/1.20.1-${NEO_VERSION}"
+    JAR_NAME="forge-1.20.1-${NEO_VERSION}-installer.jar"
+else
+    BASE_URL="$BASE_URL/neoforge/${NEO_VERSION}"
+fi
 
 PUID=${PUID:-1000}
 PGID=${PGID:-1000}
@@ -10,15 +18,16 @@ USER=${USER:-"minecraft"}
 set-up-user.sh "$USER" "$PUID" "$PGID"
 
 if [ ! -f "$JAR_NAME" ]; then
-    echo "Downloading Minecraft";
+    echo "Downloading NeoForge";
 
-    manifest=$(curl -s 'https://launchermeta.mojang.com/mc/game/version_manifest.json')
-    version=$(jq -c ".versions[] | select( .id == \"$MINECRAFT_VERSION\" )" <<< "$manifest")
-    version_manifest=$(curl -s "$(jq -r ".url" <<< "$version")")
+    server_url="${BASE_URL}/${JAR_NAME}"
 
-    server_url=$(jq -r '.downloads.server.url' <<< "$version_manifest")
+    curl -Lo "$JAR_NAME" -J "$server_url"
 
-    curl -o "$JAR_NAME" -J "$server_url"
+    java -jar "$JAR_NAME" --installServer
+
+    echo "" >> user_jvm_args.txt
+    echo "$JAVA_OPTS" >> user_jvm_args.txt
 fi
 
 echo "Accepting EULA"
@@ -28,7 +37,6 @@ configure-server-properties.sh
 
 chown -R "${USER}":"${USER}" /minecraft
 
-
-COMMAND="${*:-"cd /minecraft; $(which java) ${JAVA_OPTS} -jar $JAR_NAME nogui"}"
+COMMAND="${*:-"cd /minecraft; PATH=$(which java):$PATH ./run.sh nogui"}"
 
 su -l "${USER}" -c "$COMMAND"
