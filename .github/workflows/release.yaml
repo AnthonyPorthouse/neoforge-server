@@ -57,7 +57,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ghcr.io/anthonyporthouse/minecraft-server
+            ghcr.io/anthonyporthouse/neoforge-server
           flavor: |
             prefix=java${{ matrix.java-version }}-
           tags: |
