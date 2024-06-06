@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/AnthonyPorthouse/neoforge-server/compare/v1.0.1...v1.1.0) (2024-06-06)
+
+
+### Features
+
+* add java 21 for minecraft 1.20.5 ([432a059](https://github.com/AnthonyPorthouse/neoforge-server/commit/432a059dcb50397023436778732bdc7cf9b38b49))
+
+
+### Bug Fixes
+
+* correctly pass build arguments ([432a059](https://github.com/AnthonyPorthouse/neoforge-server/commit/432a059dcb50397023436778732bdc7cf9b38b49))
+* use correct image name ([432a059](https://github.com/AnthonyPorthouse/neoforge-server/commit/432a059dcb50397023436778732bdc7cf9b38b49))
+
 ## [1.0.1](https://github.com/AnthonyPorthouse/neoforge-server/compare/v1.0.0...v1.0.1) (2024-01-07)
 
 
